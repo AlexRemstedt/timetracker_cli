@@ -1,2 +1,2 @@
-# timetracker_cli
+# Timetracker CLI
 Command line time tracker
