@@ -31,5 +31,5 @@ def cli():
             data.write(f"""{header}
 Wake up time - {get_start_time()}
 
-  Time                       Task
------------------------------------""")
+  Time                       Task,Description  
+---------------------------------------------""")

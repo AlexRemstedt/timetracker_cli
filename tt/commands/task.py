@@ -10,9 +10,10 @@ data_location = f'tt/data/{today.day}{today.month}{today.year}'
 class Task:
     """Create task."""
     
-    def __init__(self, task):
+    def __init__(self, task, description):
         self.task = task
         self.time = f"{datetime.now()}"
+        self.description = description
     
 
 def file_exist(file):
@@ -27,10 +28,12 @@ def file_exist(file):
  
 @click.group()
 @click.option('-t', "--task", type=str, help="Task about to be started")
+@click.option('-d', "--description", 
+              type=str, help="Description of task. (optional)")
 @click.pass_context
-def cli(ctx, task):
+def cli(ctx, task, desc=None):
     """Add task to time tracker."""
-    ctx.obj = Task(task)
+    ctx.obj = Task(task, desc)
 
 
 @cli.command()
@@ -40,7 +43,8 @@ def add(ctx):
     if file_exist(data_location):
         with open(data_location, 'a') as f:
             f.write(f"""
-s,{ctx.obj.time},{ctx.obj.task}""")
+s,{ctx.obj.time},{ctx.obj.task},{ctx.obj.description}""")
+        click.echo("Get Busy!")
     else:
         click.echo("Say hello first!")
 
@@ -53,5 +57,6 @@ def end(ctx):
         with open(data_location, 'a') as f:
             f.write(f"""
 e,{ctx.obj.time},{ctx.obj.task}""")
+        click.echo("Well done.")
     else:
         click.echo("Say hello first!")
