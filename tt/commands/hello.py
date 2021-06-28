@@ -4,6 +4,7 @@ from datetime import datetime
 
 today = datetime.now()
 data_location = f'tt/data/{today.day}{today.month}{today.year}'
+user = "Alex Remstedt"
 
 
 def get_day():
@@ -30,6 +31,7 @@ def cli():
         with open(f'{data_location}', 'w') as data:
             data.write(f"""{header}
 Wake up time - {get_start_time()}
+{user}
 
   Time                       Task,Description  
 ---------------------------------------------""")
