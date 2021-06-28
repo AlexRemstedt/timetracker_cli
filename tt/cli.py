@@ -4,7 +4,11 @@ import os
 
 
 class ComplexCLI(click.MultiCommand):
-    """Allow multiple commands."""
+    """
+    Allow multiple commands.
+    
+    source: https://www.youtube.com/watch?v=Easd8LamPRE
+    """
 
     def list_commands(self, ctx):
         """List commands."""
