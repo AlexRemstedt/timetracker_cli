@@ -4,7 +4,7 @@ import click
 from datetime import datetime
 
 today = datetime.now()
-data_location = f'tt/data/{today.day}{today.month}{today.year}'
+data_location = 'tt/data/' + today.strftime('%Y%m%d') + '.txt'
 
 
 class Task:
